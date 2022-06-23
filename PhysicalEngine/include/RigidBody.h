@@ -1,43 +1,24 @@
 #pragma once
 #include"Vector2.h"
+#include <SFML/Graphics.hpp>
 
 class RigidBody
 {
 private:
+	sf::CircleShape _shape = sf::CircleShape(10.0f);
+protected:
 
 	Vector2 _position;
 	Vector2 _velocity;
 
-
-Public:
+public:
 
 	RigidBody();
-	RigidBody(const float x,const float y)
+	RigidBody(const float x, const float y);
+	RigidBody(sf::Vector2i SfmlVector);
 	~RigidBody();
 
-	void Update();
-
+	void update();
+	virtual void draw(sf::RenderWindow&);
 
 };
-
-
-
-RigidBody::RigidBody()
-{
-	_position(0, 0);
-}
-
-RigidBody::RigidBody(const float x,const float y)
-{
-	_position(x, y);
-}
-
-RigidBody::~RigidBody()
-{
-
-}
-
-inline void RigidBody::Update()
-{
-
-}
