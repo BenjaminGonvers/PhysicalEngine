@@ -4,13 +4,20 @@
 class RigidBody
 {
 private:
+
 	Vector2 _position;
+	Vector2 _velocity;
+
 
 Public:
 
 	RigidBody();
 	RigidBody(const float x,const float y)
 	~RigidBody();
+
+	void Update();
+
+
 };
 
 
@@ -26,6 +33,11 @@ RigidBody::RigidBody(const float x,const float y)
 }
 
 RigidBody::~RigidBody()
+{
+
+}
+
+inline void RigidBody::Update()
 {
 
 }

@@ -1,16 +1,11 @@
 #include <iostream>
-#include <sstream>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Graphics.hpp>
-
-#include <vector>
+#include <Game.h>
 
 
-int main(int argc, char* argv[])
+
+int main()
 {
-	sf::RenderWindow App(sf::VideoMode(800, 600, 32), "SFML Events");
-	 
+	Game myGame;
 
-    return EXIT_SUCCESS;
+    return myGame.GameLoop();
 }

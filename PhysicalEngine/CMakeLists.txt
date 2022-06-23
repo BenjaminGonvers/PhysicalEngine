@@ -36,10 +36,10 @@ find_package(box2d CONFIG REQUIRED)
 include_directories(include/)
 
 # Add source to this project's executable.  
-file(GLOB_RECURSE PROJECT_SRC src/*.cpp include/*.h)
+file(GLOB_RECURSE PROJECT_SRC src/*.cpp)
 
 # TODO: use the line with "win32" in it if you don't want the console
-add_executable(${EXECUTABLE_CUSTOM_NAME} ${PROJECT_SRC} "include/RigidBody.h" "src/RigidBody.cpp"  "include/GameObject.h")
+add_executable(${EXECUTABLE_CUSTOM_NAME} ${PROJECT_SRC} "include/RigidBody.h" "src/RigidBody.cpp"  "include/GameObject.h" "include/Game.h" "src/Game.cpp")
 # add_executable(${EXECUTABLE_CUSTOM_NAME} win32 ${PROJECT_SRC})
 
 # Add data dependencies
