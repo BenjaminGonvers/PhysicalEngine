@@ -1,4 +1,3 @@
-#pragma once
 #include <Gravity.h>
 
 Gravity::Gravity()
