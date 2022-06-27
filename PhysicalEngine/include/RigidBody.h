@@ -10,6 +10,7 @@ protected:
 
 	Vector2 _position;
 	Vector2 _velocity;
+	bool _affectedByGravity = false;
 
 public:
 
@@ -18,7 +19,14 @@ public:
 	RigidBody(sf::Vector2i SfmlVector);
 	~RigidBody();
 
-	void update();
+	bool AffectedByGravity() const
+	{return _affectedByGravity; }
+	void AffectedByGravity(bool affected_by_gravity)
+	{_affectedByGravity = affected_by_gravity;}
+
+	void addVelocity(Vector2);
+
+	void update(float);
 	virtual void draw(sf::RenderWindow&);
 
 };

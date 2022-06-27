@@ -65,9 +65,12 @@ bool Game::GameLoop()
 
 void Game::upDate()
 {
+	_deltaTime = getNewDeltaTime();
+	_gravity.deltaTime = _deltaTime;
+	_gravity.Update(entity);
 	for (auto& rigid_body : entity)
 	{
-		rigid_body->update();
+		rigid_body->update(_deltaTime);
 	}
 }
 
@@ -77,4 +80,10 @@ void Game::draw(sf::RenderWindow& window)
 	{
 		rigid_body->draw(window);
 	}
+}
+
+float Game::getNewDeltaTime()
+{
+	const sf::Time elapsed = _clock.restart();
+	return elapsed.asSeconds();
 }

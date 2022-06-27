@@ -4,12 +4,14 @@
 
 RigidBody::RigidBody()
 {
+	_affectedByGravity = true;
 	_position = Vector2(0, 0);
 	_velocity = Vector2(0, 0);
 }
 
 RigidBody::RigidBody(const float x, const float y)
 {
+	_affectedByGravity = true;
 	_position = Vector2(x-10, y-10);
 	_velocity = Vector2(0, 0);
 }
@@ -25,9 +27,14 @@ RigidBody::~RigidBody()
 
 }
 
-void RigidBody::update()
+void RigidBody::addVelocity(Vector2 otherVelocity)
 {
-	_position += _velocity;
+	_velocity += otherVelocity;
+}
+
+void RigidBody::update(float deltaTime)
+{
+	_position += _velocity * deltaTime;
 }
 
 void RigidBody::draw(sf::RenderWindow& window)
