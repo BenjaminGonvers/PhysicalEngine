@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include <RigidBody.h>
-#include <Gravity.h>
+#include "RigidBody.h"
+#include "Gravity.h"
 
 class Game
 {

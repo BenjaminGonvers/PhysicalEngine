@@ -1,12 +1,10 @@
-
 #include <iostream>
-#include <Game.h>
-
+#include "Game.h"
 
 
 int main()
 {
 	Game myGame;
 
-    return myGame.GameLoop();
+	return myGame.GameLoop();
 }

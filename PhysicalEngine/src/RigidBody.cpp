@@ -12,13 +12,13 @@ RigidBody::RigidBody()
 RigidBody::RigidBody(const float x, const float y)
 {
 	_affectedByGravity = true;
-	_position = Vector2(x-10, y-10);
+	_position = Vector2(x, y);
 	_velocity = Vector2(0, 0);
 }
 
 RigidBody::RigidBody(sf::Vector2i SfmlVector)
 {
-	_position = Vector2(SfmlVector.x-10, - SfmlVector.y - 10.0f);
+	_position = Vector2(SfmlVector.x, - SfmlVector.y);
 	_velocity = Vector2(0, 0);
 }
 

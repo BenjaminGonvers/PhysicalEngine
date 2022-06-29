@@ -1,6 +1,10 @@
 #pragma once
 #include <RigidBody.h>
 
+#include "RigidBody.h"
+
+
+
 class CircleBody : public RigidBody
 {
 private:
@@ -13,6 +17,12 @@ public:
 	CircleBody(sf::Vector2i SfmlVector, float diameter);
 
 	void draw(sf::RenderWindow&) override;
+
+	float getDiameter() const
+	{return _diameter;}
+
+	void setDiameter(float newDiameter)
+	{_shape.setRadius(newDiameter/2); _diameter = newDiameter;}
 
 };
 

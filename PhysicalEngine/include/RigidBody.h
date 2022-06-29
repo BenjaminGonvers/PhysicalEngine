@@ -11,6 +11,7 @@ protected:
 	Vector2 _position;
 	Vector2 _velocity;
 	bool _affectedByGravity = false;
+	bool _isCollided = false;
 
 public:
 
@@ -23,6 +24,16 @@ public:
 	{return _affectedByGravity; }
 	void AffectedByGravity(bool affected_by_gravity)
 	{_affectedByGravity = affected_by_gravity;}
+
+	Vector2 getPosition()
+	{return _position;}
+	void setPosition(Vector2 newPosition)
+	{_position = newPosition;}
+
+	bool IsCollided()
+	{return _isCollided;}
+	void IsCollided(bool isCollided)
+	{_isCollided = isCollided;}
 
 	void addVelocity(Vector2);
 
