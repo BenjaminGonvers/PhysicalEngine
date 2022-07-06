@@ -1,3 +1,5 @@
+#include "SFML/System/Vector2.hpp"
+
 #include <Vector2.h>
 #include <cmath>
 
@@ -15,41 +17,39 @@ Vector2::Vector2(const float x, const float y)
 
 
 Vector2::~Vector2()
-{
+= default;
 
+sf::Vector2f Vector2::sfmlVector2()
+{
+	return {x, -y};
 }
 
-Vector2 Vector2::sfmlVector2()
-{
-	return Vector2(x, -y);
-}
-
-Vector2 Vector2::normalized()
+Vector2 Vector2::normalized() const
 {
 	return *this / magnitude();
 }
 
-float Vector2::magnitude()
+float Vector2::magnitude() const
 {
 	return hypot(x, y);
 }
 
-Vector2 Vector2::rightOrthogonal()
+Vector2 Vector2::rightOrthogonal() const
 {
 	return Vector2(y, -x);
 }
 
-Vector2 Vector2::leftOrthogonal()
+Vector2 Vector2::leftOrthogonal() const
 {
 	return Vector2(-y, x);
 }
 
-Vector2 Vector2::operator+(const Vector2& other)
+Vector2 Vector2::operator+(const Vector2& other) const
 {
 	return Vector2(x + other.x, y + other.y);
 }
 
-Vector2 Vector2::operator-(const Vector2& other)
+Vector2 Vector2::operator-(const Vector2& other) const
 {
 	return Vector2(x - other.x, y - other.y);
 }
@@ -66,12 +66,12 @@ Vector2 Vector2::operator-=(const Vector2& other)
 	return *this;
 }
 
-Vector2 Vector2::operator*(const float scalar)
+Vector2 Vector2::operator*(const float scalar) const
 {
 	return Vector2(x * scalar, y * scalar);
 }
 
-Vector2 Vector2::operator/(const float scalar)
+Vector2 Vector2::operator/(const float scalar) const
 {
 	return Vector2(x / scalar, y / scalar);
 }
@@ -88,5 +88,18 @@ Vector2 Vector2::operator/=(const float scalar)
 	return *this;
 }
 
+float Vector2::GetAngularToOAxisX() const
+{
+	return std::atan2(y,x);
+}
 
-//dotProduct = V1.x * V2.x + V1.y * V2.y
+float Vector2::DotProduct(const Vector2& otherVector) const
+{
+	return x * otherVector.x + y * otherVector.y;
+}
+
+
+float Vector2::GetAngularToVector(const Vector2 other) const
+{
+	return std::atan2(y, x) - std::atan2(other.y, other.x);
+}

@@ -14,7 +14,7 @@ public:
 
 	CircleBody(float, float);
 	CircleBody(float, float,float);
-	CircleBody(sf::Vector2i SfmlVector, float diameter);
+	CircleBody(sf::Vector2f SfmlVector, float diameter);
 
 	void draw(sf::RenderWindow&) override;
 

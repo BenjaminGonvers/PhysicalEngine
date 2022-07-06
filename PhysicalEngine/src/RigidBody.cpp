@@ -39,7 +39,5 @@ void RigidBody::update(float deltaTime)
 
 void RigidBody::draw(sf::RenderWindow& window)
 {
-	_shape.setFillColor(sf::Color::Red);
-	_shape.setPosition(_position.sfmlVector2().x, _position.sfmlVector2().y);
-	window.draw(_shape);
+	
 }

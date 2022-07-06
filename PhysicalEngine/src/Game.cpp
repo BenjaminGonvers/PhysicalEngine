@@ -3,7 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <CircleBody.h>
 #include <CollisionChecker.h>
-
+#include "CollisionSolver.h"
+#include "RectangleBody.h"
 
 
 bool Game::GameLoop()
@@ -26,7 +27,7 @@ bool Game::GameLoop()
 
 			sf::Vector2f worldPosition = window.mapPixelToCoords(localPosition);
 
-			entity.emplace_back(std::make_unique<CircleBody>(sf::Vector2i(worldPosition.x, worldPosition.y), 50));
+			entity.emplace_back(std::make_unique<RectangleBody>(sf::Vector2f(worldPosition.x, worldPosition.y),100,50));
 			_leftClickTrue = true;
 		}
 
@@ -41,7 +42,7 @@ bool Game::GameLoop()
 
 			sf::Vector2f worldPosition = window.mapPixelToCoords(localPosition);
 
-			entity.emplace_back(std::make_unique<CircleBody>(sf::Vector2i(worldPosition.x,worldPosition.y), 100));
+			entity.emplace_back(std::make_unique<CircleBody>(sf::Vector2f(worldPosition.x,worldPosition.y), 100));
 			_rightClickTrue = true;
 		}
 
@@ -50,13 +51,13 @@ bool Game::GameLoop()
 			_rightClickTrue = false;
 		}
 
-		// Force Solver in update? probably
-		//ToDo Collision Solver probably like this "CollisionSolver(CheckCollision[std::pair])" in one line
-		//ToDo Move Same that upward, SolveMove(SolveVelocity) need probably one, and only method. name SolveMove();
-		//toDo upDatePhysique
-
-		CollisionChecker collision_checker = CollisionChecker(entity);
-		collision_checker.CreateList();
+		if(!entity.empty())
+		{
+			CollisionChecker collision_checker = CollisionChecker(entity);
+			CollisionSolver Collision_solver = collision_checker.CreateList();
+			Collision_solver.SolveCollisionList();
+		}
+		
 		upDate();
 		window.clear(sf::Color::Black);
 		draw(window);

@@ -4,14 +4,17 @@
 
 class RigidBody
 {
-private:
-	sf::CircleShape _shape = sf::CircleShape(10.0f);
 protected:
 
 	Vector2 _position;
 	Vector2 _velocity;
+
 	bool _affectedByGravity = false;
+	bool _isStatic = false;
+
 	bool _isCollided = false;
+	
+	float _Mass = 1;
 
 public:
 
@@ -34,6 +37,16 @@ public:
 	{return _isCollided;}
 	void IsCollided(bool isCollided)
 	{_isCollided = isCollided;}
+
+	float Mass()
+	{return _Mass;}
+	void Mass(float mass)
+	{_Mass = mass;}
+
+	Vector2 Velocity()
+	{return _velocity;}
+	void Velocity(Vector2 velocity)
+	{_velocity = velocity;}
 
 	void addVelocity(Vector2);
 
