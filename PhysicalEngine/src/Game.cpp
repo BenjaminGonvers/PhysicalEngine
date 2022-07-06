@@ -5,15 +5,18 @@
 #include <CollisionChecker.h>
 #include "CollisionSolver.h"
 #include "RectangleBody.h"
+#include <QuadPartitioning.h>
 
 
 bool Game::GameLoop()
 {
 	sf::RenderWindow window(sf::VideoMode(1500, 1000), "SFML works!");
+	
 
 
 	while (window.isOpen())
 	{
+		window.clear(sf::Color::Black);
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -42,7 +45,7 @@ bool Game::GameLoop()
 
 			sf::Vector2f worldPosition = window.mapPixelToCoords(localPosition);
 
-			entity.emplace_back(std::make_unique<CircleBody>(sf::Vector2f(worldPosition.x,worldPosition.y), 100));
+			entity.emplace_back(std::make_unique<CircleBody>(sf::Vector2f(worldPosition.x,worldPosition.y), 20));
 			_rightClickTrue = true;
 		}
 
@@ -53,13 +56,15 @@ bool Game::GameLoop()
 
 		if(!entity.empty())
 		{
+			QuadPartitioning quad_partitioning = QuadPartitioning(entity);
+			quad_partitioning.CreateNode();
+			quad_partitioning.DebugDraw(window);
 			CollisionChecker collision_checker = CollisionChecker(entity);
 			CollisionSolver Collision_solver = collision_checker.CreateList();
 			Collision_solver.SolveCollisionList();
 		}
 		
 		upDate();
-		window.clear(sf::Color::Black);
 		draw(window);
 		window.display();
 	}

@@ -214,9 +214,9 @@ void CollisionSolver::ResolveCircleRectangleCorner(CircleBody* circleBody,Rectan
 	float M2 = rectangleBody->Mass();
 
 
-	float MinimalMouvement = circleBody->getDiameter() / 2  - vectorFirstToSegond.magnitude();
-	rectangleBody->setPosition(rectangleBody->getPosition() + vectorFirstToSegond.normalized() * MinimalMouvement / 2);
-	circleBody->setPosition(circleBody->getPosition() - vectorFirstToSegond.normalized() * MinimalMouvement / 2);
+	float overLaps = circleBody->getDiameter() / 2  - vectorFirstToSegond.magnitude();
+	rectangleBody->setPosition(rectangleBody->getPosition() + vectorFirstToSegond.normalized() * overLaps / 2);
+	circleBody->setPosition(circleBody->getPosition() - vectorFirstToSegond.normalized() * overLaps / 2);
 
 	Vector2 V1p;
 	Vector2 V2p;
