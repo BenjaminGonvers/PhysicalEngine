@@ -6,7 +6,7 @@ RectangleBody::RectangleBody(float posX,float posY,float length, float width) :_
 	_b = Vector2(length / 2, width / 2);
 	_c = Vector2(length / 2, -width / 2);
 	_d = Vector2(-length / 2, -width / 2);
-	_position = Vector2(posX, -posY);
+	_position = Vector2(posX, posY);
 	_shape.setOrigin(length / 2, width / 2);
 }
 
@@ -16,7 +16,7 @@ RectangleBody::RectangleBody(sf::Vector2f position, float length, float width) :
 	_b = Vector2(length / 2, width / 2);
 	_c = Vector2(length / 2, -width / 2);
 	_d = Vector2(-length / 2, -width / 2);
-	_position = Vector2(position.x,-position.y);
+	_position = Vector2(position.x,1000 - position.y);
 	_shape.setOrigin(length / 2, width / 2);
 }
 
@@ -36,7 +36,7 @@ void RectangleBody::draw(sf::RenderWindow& window)
 		_shape.setFillColor(sf::Color::Blue);
 	}
 
-	_shape.setPosition(_position.sfmlVector2());
+	_shape.setPosition(_position.x,1000 - _position.y);
 	window.draw(_shape);
 
 	sf::ConvexShape shape;

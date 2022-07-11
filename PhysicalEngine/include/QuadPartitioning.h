@@ -22,6 +22,7 @@ public:
 
 	void CreateFirstNode();
 	void CreateTreeNode();
+
 	void DebugDraw(sf::RenderWindow& window);
 
 private:

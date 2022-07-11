@@ -18,7 +18,7 @@ CircleBody::CircleBody(float x, float y,float diameter)
 
 CircleBody::CircleBody(sf::Vector2f SfmlVector, float diameter)
 {
-	_position = Vector2( SfmlVector.x, -SfmlVector.y);
+	_position = Vector2( SfmlVector.x, 1000 -SfmlVector.y);
 	_velocity = Vector2(0, 0);
 	_diameter = diameter;
 	_shape = sf::CircleShape(_diameter/2);
@@ -31,15 +31,9 @@ void CircleBody::draw(sf::RenderWindow& window)
 	}else
 	{_shape.setFillColor(sf::Color::Blue);}
 	
-	_shape.setPosition(_position.sfmlVector2().x - _diameter/2, _position.sfmlVector2().y - _diameter/2);
+	_shape.setPosition(_position.x - _diameter/2, 1000 - _position.y - _diameter/2);
 	window.draw(_shape);
 
-	sf::ConvexShape shape;
-	shape.setPointCount(3);
-	shape.setPoint(0,_position.sfmlVector2());
-	shape.setPoint(1, (_position + Vector2(0, _velocity.y)).sfmlVector2());
-	shape.setPoint(2, (_position + Vector2(_velocity.x, 0)).sfmlVector2());
-	shape.setFillColor(sf::Color::Yellow);
-	window.draw(shape);
+	
 
 }

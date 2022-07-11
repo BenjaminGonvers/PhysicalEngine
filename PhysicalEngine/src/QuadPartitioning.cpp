@@ -19,6 +19,15 @@ std::vector<std::pair<RigidBody*, RigidBody*>> QuadPartitioning::CreateList()
 	CreateFirstNode();
 	CreateTreeNode();
 
+	if (!_childNode.empty())
+	{
+		for (auto& node : _childNode)
+		{
+		node->CheckAllPossibleCollision(_potentialCollision, _childNode);
+		}
+	}
+	
+
 	return _potentialCollision;
 }
 
@@ -86,9 +95,9 @@ void QuadPartitioning::CreateFirstNode()
 
 	for (float itX = std::floor(GetMinX()); itX <= std::ceil(GetMaxX()); itX += 500)
 	{
-		for (float itY = std::ceil(GetMaxY()); itY >= std::floor(GetMinY()); itY -= 500)
+		for (float itY = std::floor(GetMinY()); itY <= std::ceil(GetMaxY()); itY += 500)
 		{
-			_childNode.emplace_back(std::make_unique<PartitioningNode>(itX, itY, Vector2(500, 500)));
+			_childNode.emplace_back(std::make_unique<PartitioningNode>(itX, itY, Vector2(500, 500),0));
 
 		}
 	}

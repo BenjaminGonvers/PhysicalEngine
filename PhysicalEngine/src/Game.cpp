@@ -56,14 +56,16 @@ bool Game::GameLoop()
 
 		if(!entity.empty())
 		{
+			
 			QuadPartitioning quad_partitioning = QuadPartitioning(entity);
 			quad_partitioning.CreateNode();
-			quad_partitioning.DebugDraw(window);
-			CollisionChecker collision_checker = CollisionChecker(entity);
-			CollisionSolver Collision_solver = collision_checker.CreateList();
+			CollisionChecker collision_checker = CollisionChecker();
+			CollisionSolver Collision_solver = collision_checker.CreateList(quad_partitioning.CreateList());
 			Collision_solver.SolveCollisionList();
+			quad_partitioning.DebugDraw(window);
 		}
-		
+
+
 		upDate();
 		draw(window);
 		window.display();

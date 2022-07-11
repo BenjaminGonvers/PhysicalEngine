@@ -36,6 +36,8 @@ public:
 	bool operator<(const Vector2&) const;
 	bool operator>(const Vector2&) const;
 	bool operator==(const Vector2&) const;
+	bool operator<=(const Vector2&) const;
+	bool operator>=(const Vector2&) const;
 
 	float GetAngularToOAxisX() const;
 	float DotProduct(const Vector2&) const;

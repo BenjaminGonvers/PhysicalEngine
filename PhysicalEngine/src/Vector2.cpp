@@ -115,6 +115,24 @@ bool Vector2::operator==(const Vector2& other) const
 	return false;
 }
 
+bool Vector2::operator>=(const Vector2& other) const
+{
+	if (y >= other.y && x >= other.x)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Vector2::operator<=(const Vector2& other) const
+{
+	if (y <= other.y && x <= other.x)
+	{
+		return true;
+	}
+	return false;
+}
+
 float Vector2::GetAngularToOAxisX() const
 {
 	return std::atan2(y,x);
