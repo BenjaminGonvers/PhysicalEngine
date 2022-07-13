@@ -16,6 +16,7 @@ public:
 	float deltaTime = 0;
 	Gravity();
 	Gravity(Vector2);
+	Gravity(float Gravity);
 	~Gravity();
 
 	void SetGravity(Vector2);
