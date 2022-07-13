@@ -15,7 +15,7 @@ public:
 
 	float deltaTime = 0;
 	Gravity();
-	Gravity(Vector2);
+	Gravity(const Vector2&);
 	Gravity(float Gravity);
 	~Gravity();
 

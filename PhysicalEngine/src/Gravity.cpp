@@ -7,15 +7,15 @@ Gravity::Gravity()
 }
 
 
-Gravity::Gravity(const Vector2 Gravity)
+Gravity::Gravity(const Vector2& gravity)
 {
-	_gravity = Gravity;
+	_gravity = gravity;
 	_gravityValue = _gravity.magnitude();
 }
 
-Gravity::Gravity(const float Gravity)
+Gravity::Gravity(const float gravity)
 {
-	_gravity = Vector2(0, -Gravity);
+	_gravity = Vector2(0, -gravity);
 	_gravityValue = _gravity.magnitude();
 }
 
