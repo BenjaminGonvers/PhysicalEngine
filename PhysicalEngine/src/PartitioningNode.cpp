@@ -162,3 +162,8 @@ void PartitioningNode::DebugDraw(sf::RenderWindow& window)
 	}
 
 }
+
+int PartitioningNode::GetNumberObject() const
+{
+	return _entityInBound.size();
+}

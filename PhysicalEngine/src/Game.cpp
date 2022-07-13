@@ -30,7 +30,7 @@ bool Game::GameLoop()
 
 			sf::Vector2f worldPosition = window.mapPixelToCoords(localPosition);
 
-			entity.emplace_back(std::make_unique<RectangleBody>(sf::Vector2f(worldPosition.x, worldPosition.y),100,50));
+			entity.emplace_back(std::make_unique<RectangleBody>(sf::Vector2f(worldPosition.x, worldPosition.y),40,25));
 			_leftClickTrue = true;
 		}
 

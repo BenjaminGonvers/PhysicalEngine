@@ -18,6 +18,7 @@ public:
 	                            PartitioningNode* nodeToCheck);
 	void CheckPossibleCollisionInbound(std::vector<std::pair<RigidBody*, RigidBody*>>& potentialCollision);
 	void DebugDraw(sf::RenderWindow& window);
+	int GetNumberObject() const;
 
 
 private:

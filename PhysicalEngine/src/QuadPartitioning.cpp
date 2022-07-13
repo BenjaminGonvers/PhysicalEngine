@@ -86,7 +86,6 @@ float QuadPartitioning::GetMaxY()
 void QuadPartitioning::CreateNode()
 {
 	CreateFirstNode();
-	CreateTreeNode();
 }
 
 void QuadPartitioning::CreateFirstNode()
@@ -98,6 +97,12 @@ void QuadPartitioning::CreateFirstNode()
 		for (float itY = std::floor(GetMinY()); itY <= std::ceil(GetMaxY()); itY += 500)
 		{
 			_childNode.emplace_back(std::make_unique<PartitioningNode>(itX, itY, Vector2(500, 500),0));
+			_childNode.back()->CreateNode(_entity);
+
+			if(_childNode.back()->GetNumberObject() <= 0)
+			{
+				_childNode.erase(_childNode.end()-1);
+			}
 
 		}
 	}

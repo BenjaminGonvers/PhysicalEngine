@@ -10,7 +10,7 @@ private:
 	sf::Clock _clock;
 	float _deltaTime = 0;
 
-	Gravity _gravity = Gravity();
+	Gravity _gravity = Gravity(0);
 	std::vector<std::unique_ptr<RigidBody>> entity;
 
 	bool _leftClickTrue = false;
